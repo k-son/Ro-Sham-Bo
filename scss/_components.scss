@@ -1,4 +1,71 @@
+.main {
+  background-color: var(--color-main-bg);
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+}
 
+
+/// SCORE BOXES
+.scoreBox {
+  height: 15rem;
+  width: 12rem;
+  background-color: var(--color-lumination-off);
+  border: .2rem solid #d4d4d4;
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+
+  &--you {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background-color: var(--color-lumination-on);
+  }
+
+  &--cpu {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+  }
+
+  &__display {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-score-bg);
+    overflow: hidden;
+  }
+  
+  &__score {
+    height: 100%;
+    width: 100%;
+    font-size: 10rem;
+    line-height: 1.3;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: var(--color-score);
+  }
+}
+
+/// ILLUMINATED TEXTS ABOUT POINTS AND WHO WINS
+.whoWins,
+.pointFor {
+  font-family: Codystar, monospace;
+  color: var(--color-lumination-off);
+  text-align: center;
+}
+
+.whoWins {
+  margin-bottom: .4rem;
+  font-size: 2.4rem;
+}
+
+.pointFor {
+  margin-top: .4rem;
+  font-size: 1.4rem;
+}
 
 
 
