@@ -52,22 +52,23 @@
 /// ILLUMINATED TEXTS ABOUT POINTS AND WHO WINS
 .whoWins,
 .pointFor {
-  font-family: MUSICNET, monospace;
+  font-family: CFDots-Regular, monospace;
   color: var(--color-lumination-off);
   text-align: center;
   text-transform: capitalize;
 }
 
 .whoWins {
-  margin-bottom: .1rem;
-  font-size: 2.2rem;
+  margin-bottom: .4rem;
+  font-size: 2rem;
   text-transform: capitalize;
   color: var(--color-lumination-on);
 }
 
 .pointFor {
   margin-top: .4rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  color: var(--color-lumination-on);
 }
 
 
