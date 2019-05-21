@@ -5,10 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Rock Paper Scissors</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Codystar&display=swap" rel="stylesheet">
+  
   <script src="script.js" async></script>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>The Game</h1>
+<main>
+  <!-- Score boxes and sings about 'who wins', 'who gain the point' -->
+  <!-- You -->
+  <div class="playerBox playerBox--you">
+    <div class="whoWins whoWins--you">you win</div>
+    <div class="scoreBox scoreBox--you">
+      <div class="scoreBox__illumination scoreBox__illumination--you">
+        <div class="scoreBox__display scoreBox__display--you">
+          <div class="scoreBox__score" id="score--you--0">0</div>
+          <div class="scoreBox__score" id="score--you--1">1</div>
+          <div class="scoreBox__score" id="score--you--2">2</div>
+          <div class="scoreBox__score" id="score--you--3">3</div>
+          <div class="scoreBox__score" id="score--you--4">4</div>
+          <div class="scoreBox__score" id="score--you--5">5</div>
+        </div>
+      </div>
+    </div>
+    <div class="poinFor poinFor--you">point for you</div>
+  </div>
+  <!-- CPU -->
+  <div class="playerBox playerBox--cpu">
+    <div class="whoWins whoWins--cpu">cpu wins</div>
+    <div class="scoreBox scoreBox--cpu">
+      <div class="scoreBox__illumination scoreBox__illumination--cpu">
+        <div class="scoreBox__display scoreBox__display--cpu">
+          <div class="scoreBox__score" id="score--cpu--0">0</div>
+          <div class="scoreBox__score" id="score--cpu--1">1</div>
+          <div class="scoreBox__score" id="score--cpu--2">2</div>
+          <div class="scoreBox__score" id="score--cpu--3">3</div>
+          <div class="scoreBox__score" id="score--cpu--4">4</div>
+          <div class="scoreBox__score" id="score--cpu--5">5</div>
+        </div>
+      </div>
+    </div>
+    <div class="poinFor poinFor--cpu">point for cpu</div>
+  </div>
+
+  <!-- Choice indicators and rules description(not for mobiles screens) -->
+  <!-- You -->
+  <div class="choiceIndicators choiceIndicators--you">
+    <div class="choiceIndicatorBox--you choiceIndicator__paperBox choiceIndicator__paperBox--you">
+      <span class="choiceIndicator--paper__text">paper</span>
+      <div class="choiceIndicator--paper__indicator" id="paper__indicator--you"></div>
+    </div>
+    <div class="choiceIndicatorBox--you choiceIndicator__rockBox choiceIndicator__rockBox--you">
+      <span class="choiceIndicator--rock__text">rock</span>
+      <div class="choiceIndicator--rock__indicator" id="rock__indicator--you"></div>
+    </div>
+    <div class="choiceIndicatorBox--you choiceIndicator__scissorsBox choiceIndicator__scissorsBox--you">
+      <span class="choiceIndicator--scissors__text">scissors</span>
+      <div class="choiceIndicator--scissors__indicator" id="scissors__indicator--you"></div>
+    </div>
+  </div>
+  <!-- CPU -->
+  <div class="choiceIndicators choiceIndicators--cpu">
+    <div class="choiceIndicatorBox--cpu choiceIndicator__paperBox choiceIndicator__paperBox--cpu">
+      <span class="choiceIndicator--paper__text">paper</span>
+      <div class="choiceIndicator--paper__indicator" id="paper__indicator--cpu"></div>
+    </div>
+    <div class="choiceIndicatorBox--cpu choiceIndicator__rockBox choiceIndicator__rockBox--cpu">
+      <span class="choiceIndicator--rock__text">rock</span>
+      <div class="choiceIndicator--rock__indicator" id="rock__indicator--cpu"></div>
+    </div>
+    <div class="choiceIndicatorBox--cpu choiceIndicator__scissorsBox choiceIndicator__scissorsBox--cpu">
+      <span class="choiceIndicator--scissors__text">scissors</span>
+      <div class="choiceIndicator--scissors__indicator" id="scissors__indicator--cpu"></div>
+    </div>
+  </div>
+  <!-- Description -->
+  <div class="descriptionBox">
+    <p class="descriptionBox__para">Paper beats rock</p>
+    <p class="descriptionBox__para">Rock beats scissors</p>
+    <p class="descriptionBox__para">Scissors beats paper</p>
+  </div>
+
+  <!-- Gaming buttons -->
+  <div class="gamingButton button--paper">
+    <div class="button--paper__inside"></div>
+  </div>
+  <div class="gamingButton button--rock">
+    <div class="button--rock__inside"></div>
+  </div>
+  <div class="gamingButton button--scissors">
+    <div class="button--scissors__inside"></div>
+  </div>
+  <div class="startButton">
+    <div class="startButton__inside"></div>
+  </div>
+  <div class="questionButton"></div>
+  <div class="soundButton"></div>
+</main>
 
 </body>
 </html>

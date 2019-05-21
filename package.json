@@ -1,0 +1,26 @@
+{
+  "name": "rock_paper_scissors",
+  "version": "1.0.0",
+  "description": "Simple game web page",
+  "main": "script.js",
+  "dependencies": {
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "compile:sass": "node-sass scss/main.scss css/styles.css -w",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel devserver compile:sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-son/Rock-Paper-Scissors.git"
+  },
+  "author": "Jacek Jarczok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k-son/Rock-Paper-Scissors/issues"
+  },
+  "homepage": "https://github.com/k-son/Rock-Paper-Scissors#readme"
+}

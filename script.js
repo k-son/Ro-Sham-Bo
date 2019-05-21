@@ -52,3 +52,15 @@ function round() {
   }
 }
 
+
+/*
+
+- maybe buttons instead of prompt
+- play to 5 wins
+- report who and why wins the round
+- keep scores
+- report a winner
+
+Style
+make it beautiful
+*/
