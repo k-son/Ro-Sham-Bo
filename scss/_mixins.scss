@@ -1,0 +1,26 @@
+@mixin centerFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin thinBorder {
+  border: 1px solid $color-border;
+}
+
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+}
+
+@mixin infoButtons($size) {
+  @include circle($size);
+  @include centerFlex;
+  @include thinBorder;
+  background-color: var(--color-infoButton);
+
+  &__icon {
+    height: 40%;
+  }
+}
