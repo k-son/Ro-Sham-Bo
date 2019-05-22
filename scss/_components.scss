@@ -6,25 +6,41 @@
 }
 
 
-/// SCORE BOXES
-.scoreBox {
-  height: 15rem;
-  width: 12rem;
-  background-color: var(--color-lumination-off);
-  border: .2rem solid #d4d4d4;
-  border-radius: 1.2rem;
-  padding: 1.2rem;
+/// PLAYER BOXES
+.playerBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &--you {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    background-color: var(--color-lumination-on);
+
   }
 
   &--cpu {
     grid-column: 4 / 5;
     grid-row: 2 / 3;
   }
+}
+
+
+.scoreBox {
+  height: 15rem;
+  width: 12rem;
+  background-color: var(--color-lumination-off);
+  border: .2rem solid $color-border;
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+
+  &--you {
+   // background-color: var(--color-lumination-on);
+  }
+
+  &--cpu {
+
+  }
+
 
   &__display {
     position: relative;
@@ -35,6 +51,9 @@
     transform: translate(-50%, -50%);
     background-color: var(--color-score-bg);
     overflow: hidden;
+    @include thinBorder;
+    border-radius: .7rem;
+    scroll-behavior: smooth;
   }
   
   &__score {
@@ -54,25 +73,160 @@
 .pointFor {
   font-family: CFDots-Regular, monospace;
   color: var(--color-lumination-off);
-  text-align: center;
   text-transform: capitalize;
 }
 
 .whoWins {
   margin-bottom: .4rem;
   font-size: 2rem;
-  text-transform: capitalize;
-  color: var(--color-lumination-on);
 }
 
 .pointFor {
   margin-top: .4rem;
   font-size: 1.2rem;
-  color: var(--color-lumination-on);
 }
 
 
+/// CHOICE INDICATORS ///
+.choiceIndicators {
 
-.icon {
-  height: 20px;
+  &--you {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+  }
+
+  &--cpu {
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+  }
+}
+
+.choiceIndicator {
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &--you {
+      flex-direction: row;
+    }
+
+    &--cpu {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__text {
+    text-transform: uppercase;
+  }
+
+  &__indicator {
+    @include circle(1rem);
+    background-color: var(--color-lumination-off);
+    @include thinBorder;
+    margin: 0 1rem;
+  }
+}
+
+
+/// SHOR GAME RULES DESCRIPTION visible on larger screens only
+.descriptionBox {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+
+  &__para  {
+    text-align: center;
+  }
+}
+
+
+/// BUTTONS
+.gamingButton {
+  @include centerFlex;
+  @include circle(6rem);
+  background-color: var(--color-lumination-off);
+  margin: auto;
+  @include thinBorder;
+
+  &--paper {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+  }
+
+  &--rock {
+    grid-column: 3 / 4;
+    grid-row: 4 / 5;
+  }
+
+  &--scissors {
+    grid-column: 4 / 5;
+    grid-row: 4 / 5;
+  }
+
+  &__inside {
+  @include centerFlex;
+  @include circle(80%);
+  background-color: var(--color-gamingButton);
+  }
+
+  &__icon {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+.startButton {
+  grid-column: 2 / 5;
+  grid-row: 5 / 6;
+  justify-self: center;
+  @include centerFlex;
+  width: 15rem;
+  height: 5rem;
+  border-radius: 5rem;
+  background-color: var(--color-lumination-off);
+  @include thinBorder;
+
+  &__inside {
+    @include centerFlex;
+    width: 92%;
+    height: 75%;
+    border-radius: 2rem;
+    background-color: var(--color-gamingButton);
+  }
+    
+  &__text {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--color-startButton);
+  }
+}
+
+.questionButton {
+  grid-column: 2 / 3;
+  grid-row: 6 / 7;
+  justify-self: start;
+  @include infoButtons;
+}
+
+.soundButton {
+  grid-column: 4 / 5;
+  grid-row: 6 / 7;
+  justify-self: end;
+  @include infoButtons;
+}
+
+
+////// Styles to use in JavaScript
+
+.luminateIt {
+  background-color: var(--color-lumination-on);
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
 }

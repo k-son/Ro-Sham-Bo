@@ -4,8 +4,12 @@
   --color-lumination-on: #c70000;
   --color-score: #ff0000;
   --color-score-bg: #fff;
-
+  --color-gamingButton: #e9e3ad;
+  --color-startButton: #b40000;
+  --color-infoButton: #b0e8f0;
 }
+
+$color-border: #e2e2e2;
 
 *,
 *::before,
@@ -25,11 +29,37 @@ body {
   line-height: 1.6;
 }
 
-::selection {
-  
-}
 
 @font-face {
   font-family: CFDots-Regular;
   src: url(../font/CFDots-Regular.ttf);
+}
+
+
+/// MIXINS
+@mixin centerFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin thinBorder {
+  border: 1px solid $color-border;
+}
+
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+}
+
+@mixin infoButtons {
+  @include circle(4rem);
+  @include centerFlex;
+  @include thinBorder;
+  background-color: var(--color-infoButton);
+
+  &__icon {
+    height: 40%;
+  }
 }
