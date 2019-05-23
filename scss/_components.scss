@@ -91,13 +91,11 @@
 }
 
 .choiceIndicator {
-
   &__box {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     
-
     &--you {
       flex-direction: row;
     }
@@ -154,7 +152,7 @@
   &__inside {
   @include centerFlex;
   @include circle(80%);
-  background-color: var(--color-gamingButton);
+  background-color: var(--color-gamingButton-bg);
   }
 
   &__icon {
@@ -179,7 +177,7 @@
     width: 90%;
     height: 75%;
     border-radius: 2rem;
-    background-color: var(--color-gamingButton);
+    background-color: var(--color-startButton-bg);
   }
     
   &__text {
