@@ -8,12 +8,15 @@
 
 html {
   font-size: 62.5%; // 1rem is 10px
+  min-height: 100%;
 }
 
 body {
   box-sizing: border-box;
   font-family: 'Share Tech Mono', monospace;
   line-height: 1.6;
+  background-color: var(--color-body-bg);
+  //background-image: radial-gradient(#9ccafd 20%, #1313bd, #000264);
 }
 
 @font-face {
