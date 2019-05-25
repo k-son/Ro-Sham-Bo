@@ -106,6 +106,8 @@ function illuminateScoreBox(el) {
 function pointTheWinner(signal, box) {
   setTimeout (function() {signal.classList.add("illuminate")}, 1500);
   setTimeout (function() {box.classList.add("illuminate--bg")}, 1500);
+  setTimeout (function() {signal.classList.remove("illuminate")}, 3000);
+  setTimeout (function() {box.classList.remove("illuminate--bg")}, 3000);
 }
 
 /// Disable and switch off buttons
