@@ -38,7 +38,7 @@ function start() {
 }
 
 function play() {
-  disactivateStart();
+  trunOffStart();
   buttonsReady();
 }
 
@@ -58,8 +58,8 @@ function drawCpu() {
   return choices[draw];
 }
 
-/// Disactivate start button
-function disactivateStart() {
+/// Turn off start button
+function trunOffStart() {
   btnStartOut.classList.remove("illuminate--bg");
 }
 
@@ -76,7 +76,7 @@ function illuminationsOff() {
 function zeroScores() {
   scoreYou = 0;
   scoreCpu = 0;
-  setTimeout (function() {document.getElementById("score--you--0").scrollIntoView()}, 1);
+  setTimeout (function() {document.getElementById("score--you--0").scrollIntoView()}, 10);
   setTimeout (function() {document.getElementById("score--cpu--0").scrollIntoView()}, 600);
 }
 
@@ -106,8 +106,6 @@ function illuminateScoreBox(el) {
 function pointTheWinner(signal, box) {
   setTimeout (function() {signal.classList.add("illuminate")}, 1500);
   setTimeout (function() {box.classList.add("illuminate--bg")}, 1500);
-  setTimeout (function() {signal.classList.remove("illuminate")}, 3000);
-  setTimeout (function() {box.classList.remove("illuminate--bg")}, 3000);
 }
 
 /// Disable and switch off buttons
@@ -124,16 +122,18 @@ function disableButtons() {
 
 /// Buttons ready - prepare and handle player's choice
 function buttonsReady() {
-  if (scoreYou === 2) {
+  if (scoreYou === 5) {
     console.log("you win");
     disableButtons();
+    btnStartIns.removeEventListener("click", play);
     pulsate(signalWinYou);
     illuminateScoreBox(signalScoreBoxYou);
     pointTheWinner(signalWinYou, signalScoreBoxYou);
     btnStartOut.classList.add("illuminate--bg");
-  } else if (scoreCpu === 2) {
+  } else if (scoreCpu === 5) {
     console.log("cpu win");
     disableButtons();
+    btnStartIns.removeEventListener("click", play);
     pulsate(signalWinCpu);
     illuminateScoreBox(signalScoreBoxCpu);
     pointTheWinner(signalWinCpu, signalScoreBoxCpu);
