@@ -29,6 +29,19 @@ const signalScoreBoxCpu = document.getElementById("scoreBox--cpu");
 let scoreYou = 0;
 let scoreCpu = 0;
 
+///// Game play
+start();
+
+function start() {
+  btnStartOut.classList.add("illuminate--bg");
+  btnStartIns.addEventListener("click", play);
+}
+
+function play() {
+  disactivateStart();
+  buttonsReady();
+}
+
 
 ///// Functions
 
@@ -48,7 +61,6 @@ function drawCpu() {
 /// Disactivate start button
 function disactivateStart() {
   btnStartOut.classList.remove("illuminate--bg");
-  //btnStartIns.removeEventListener("click", buttonsReady);
 }
 
 /// Cleaning functions
@@ -62,16 +74,16 @@ function illuminationsOff() {
 }
 
 function zeroScores() {
-  setTimeout (function() {document.getElementById("score--you--0").scrollIntoView()}, 1);
-  setTimeout (function() {document.getElementById("score--cpu--0").scrollIntoView()}, 600);
   scoreYou = 0;
   scoreCpu = 0;
+  setTimeout (function() {document.getElementById("score--you--0").scrollIntoView()}, 1);
+  setTimeout (function() {document.getElementById("score--cpu--0").scrollIntoView()}, 600);
 }
 
 /// Switch off all illuminations and zero score board
 function clean() {
-  illuminationsOff();
   zeroScores();
+  illuminationsOff();
 }
 
 /// Pulsat signal
@@ -90,6 +102,12 @@ function illuminateScoreBox(el) {
   setTimeout (function() {el.classList.remove("illuminate--bg")}, 1500);
 }
 
+/// Keep illuminated signalWin and scoreBox
+function pointTheWinner(signal, box) {
+  setTimeout (function() {signal.classList.add("illuminate")}, 1500);
+  setTimeout (function() {box.classList.add("illuminate--bg")}, 1500);
+}
+
 /// Disable and switch off buttons
 function disableButtons() {
   btnPaperIns.onclick = null;
@@ -102,26 +120,40 @@ function disableButtons() {
 }
 
 
-
 /// Buttons ready - prepare and handle player's choice
 function buttonsReady() {
-  btnStartIns.addEventListener("click", startNewGame);
-
-  btnPaperOut.classList.add("illuminate--bg");
-  btnRockOut.classList.add("illuminate--bg");
-  btnScissorsOut.classList.add("illuminate--bg");
-
-  btnPaperIns.onclick = function() {  
+  if (scoreYou === 2) {
+    console.log("you win");
     disableButtons();
-    round("paper");
-  }
-  btnRockIns.onclick = function() {
+    pulsate(signalWinYou);
+    illuminateScoreBox(signalScoreBoxYou);
+    pointTheWinner(signalWinYou, signalScoreBoxYou);
+    btnStartOut.classList.add("illuminate--bg");
+  } else if (scoreCpu === 2) {
+    console.log("cpu win");
     disableButtons();
-    round("rock");
-  }
-  btnScissorsIns.onclick = function() {
-    disableButtons();
-    round("scissors");
+    pulsate(signalWinCpu);
+    illuminateScoreBox(signalScoreBoxCpu);
+    pointTheWinner(signalWinCpu, signalScoreBoxCpu);
+    btnStartOut.classList.add("illuminate--bg");
+  } else {
+    btnStartIns.addEventListener("click", startNewGame);
+    btnPaperOut.classList.add("illuminate--bg");
+    btnRockOut.classList.add("illuminate--bg");
+    btnScissorsOut.classList.add("illuminate--bg");
+  
+    btnPaperIns.onclick = function() {  
+      disableButtons();
+      round("paper");
+    }
+    btnRockIns.onclick = function() {
+      disableButtons();
+      round("rock");
+    }
+    btnScissorsIns.onclick = function() {
+      disableButtons();
+      round("scissors");
+    }
   }
 }
 
@@ -187,21 +219,21 @@ function pointForYou() {
   pulsate(signalPointYou);
   illuminateScoreBox(signalScoreBoxYou);
   ++scoreYou;
-  //console.log(`your score is ${scoreYou}`);
   document.getElementById(`score--you--${scoreYou}`).scrollIntoView();
   setTimeout (function() {illuminationsOff()}, 1500);
   setTimeout (function() {buttonsReady()}, 1500);
+  console.log(`your score is ${scoreYou}`);
 }
 
 function pointForCpu() {
   disableButtons();
   pulsate(signalPointCpu);
   illuminateScoreBox(signalScoreBoxCpu);
-  ++scoreCpu;
-  //console.log(`cpu score is ${scoreCpu}`);
+  ++scoreCpu;  
   document.getElementById(`score--cpu--${scoreCpu}`).scrollIntoView();
   setTimeout (function() {illuminationsOff()}, 1500);
   setTimeout (function() {buttonsReady()}, 1500);
+  console.log(`cpu score is ${scoreCpu}`);
 }
 
 function noPoints() {
@@ -212,38 +244,3 @@ function noPoints() {
   setTimeout (function() {buttonsReady()}, 1500);
 }
 
-
-
-
-///// Game play
-
-start();
-
-function start() {
-  btnStartOut.classList.add("illuminate--bg");
-  btnStartIns.addEventListener("click", play);
-}
-
-function play() {
-  disactivateStart();
-
-  if (scoreYou == 5) {
-    console.log("no ten tego you");
-    
-    disableButtons();
-    pulsate(signalWinYou);
-    illuminateScoreBox(signalScoreBoxYou);
-    btnStartOut.classList.add("illuminate--bg");
-    
-  } else if (scoreCpu == 5) {
-    console.log("no ten tego cpu");
-  
-    disableButtons();
-    pulsate(signalWinCpu);
-    illuminateScoreBox(signalScoreBoxCpu);
-    btnStartOut.classList.add("illuminate--bg");
-    
-  } else {
-    buttonsReady();
-  }
-}
