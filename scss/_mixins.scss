@@ -24,3 +24,8 @@
     height: 40%;
   }
 }
+
+@mixin questionAndSoundButtons {
+    height: 2.5rem;
+    padding: .5rem;
+}

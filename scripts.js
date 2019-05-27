@@ -9,6 +9,8 @@ const btnScissorsIns = document.getElementById("button--scissors--ins");
 const btnScissorsOut = document.getElementById("button--scissors--out");
 const btnQuestion = document.getElementById("button--question");
 const btnSound = document.getElementById("button--sound");
+const btnSoundOn = document.getElementById("sound--on");
+const btnSoundOff = document.getElementById("sound--off");
 const modalBox = document.getElementById("modalBox");
 const btnCloseModal = document.getElementById("modalBoxClose");
 
@@ -35,11 +37,13 @@ const soundWinCpu = document.getElementById("sound__win--cpu");
 let scoreYou = 0;
 let scoreCpu = 0;
 
+
 ///// Game play
 start();
 
 function start() {
   btnStartOut.classList.add("illuminate--bg");
+  muteSounds();
   btnStartIns.addEventListener("click", play);
 }
 
@@ -51,7 +55,6 @@ function play() {
 
 
 ///// Functions
-
 /// Option for new game
 function startNewGame() {
   clean();
@@ -135,6 +138,33 @@ function playAudio(sound) {
 function pauseAudio(sound) { 
   sound.pause(); 
 }
+
+/// Mute and unmute audio
+
+function playSounds() {
+  soundStart.muted = false;
+  soundWinYou.muted = false;
+  soundWinCpu.muted = false;
+}
+
+function muteSounds() {
+  soundStart.muted = true;
+  soundWinYou.muted = true;
+  soundWinCpu.muted = true;
+}
+
+btnSoundOn.addEventListener("click", function() {
+  playSounds();
+  btnSoundOn.classList.toggle("displayNone");
+  btnSoundOff.classList.toggle("displayNone");
+})
+
+btnSoundOff.addEventListener("click", function() {
+  muteSounds();
+  btnSoundOn.classList.toggle("displayNone");
+  btnSoundOff.classList.toggle("displayNone");
+})
+
 
 
 /// Buttons ready - prepare and handle player's choice
@@ -272,6 +302,5 @@ btnQuestion.onclick = function() {
 }
 
 modalBox.addEventListener("click", modalBoxVisibility);
-
 
 
