@@ -9,6 +9,8 @@ const btnScissorsIns = document.getElementById("button--scissors--ins");
 const btnScissorsOut = document.getElementById("button--scissors--out");
 const btnQuestion = document.getElementById("button--question");
 const btnSound = document.getElementById("button--sound");
+const modalBox = document.getElementById("modalBox");
+const btnCloseModal = document.getElementById("modalBoxClose");
 
 const indicatorPaperCpu = document.getElementById("indicator--paper--cpu");
 const indicatorPaperYou = document.getElementById("indicator--paper--you");
@@ -26,6 +28,10 @@ const signalDrawCpu = document.getElementById("draw--cpu");
 const signalScoreBoxYou = document.getElementById("scoreBox--you");
 const signalScoreBoxCpu = document.getElementById("scoreBox--cpu");
 
+const soundStart = document.getElementById("sound__start");
+const soundWinYou = document.getElementById("sound__win--you");
+const soundWinCpu = document.getElementById("sound__win--cpu");
+
 let scoreYou = 0;
 let scoreCpu = 0;
 
@@ -38,6 +44,7 @@ function start() {
 }
 
 function play() {
+  playAudio(soundStart);
   trunOffStart();
   buttonsReady();
 }
@@ -48,6 +55,7 @@ function play() {
 /// Option for new game
 function startNewGame() {
   clean();
+  playAudio(soundStart);
   setTimeout (buttonsReady, 1200);
 }
 
@@ -119,22 +127,31 @@ function disableButtons() {
   btnScissorsOut.classList.remove("illuminate--bg");
 }
 
+/// Audio
+function playAudio(sound) {
+  sound.play();
+}
+
+function pauseAudio(sound) { 
+  sound.pause(); 
+}
+
 
 /// Buttons ready - prepare and handle player's choice
 function buttonsReady() {
-  if (scoreYou === 5) {
-    console.log("you win");
+  if (scoreYou === 2) {
     disableButtons();
     btnStartIns.removeEventListener("click", play);
     pulsate(signalWinYou);
+    playAudio(soundWinYou);
     illuminateScoreBox(signalScoreBoxYou);
     pointTheWinner(signalWinYou, signalScoreBoxYou);
     btnStartOut.classList.add("illuminate--bg");
-  } else if (scoreCpu === 5) {
-    console.log("cpu win");
+  } else if (scoreCpu === 2) {
     disableButtons();
     btnStartIns.removeEventListener("click", play);
     pulsate(signalWinCpu);
+    playAudio(soundWinCpu);
     illuminateScoreBox(signalScoreBoxCpu);
     pointTheWinner(signalWinCpu, signalScoreBoxCpu);
     btnStartOut.classList.add("illuminate--bg");
@@ -224,7 +241,6 @@ function pointForYou() {
   document.getElementById(`score--you--${scoreYou}`).scrollIntoView();
   setTimeout (function() {illuminationsOff()}, 1500);
   setTimeout (function() {buttonsReady()}, 1500);
-  console.log(`your score is ${scoreYou}`);
 }
 
 function pointForCpu() {
@@ -235,7 +251,6 @@ function pointForCpu() {
   document.getElementById(`score--cpu--${scoreCpu}`).scrollIntoView();
   setTimeout (function() {illuminationsOff()}, 1500);
   setTimeout (function() {buttonsReady()}, 1500);
-  console.log(`cpu score is ${scoreCpu}`);
 }
 
 function noPoints() {
@@ -245,4 +260,18 @@ function noPoints() {
   setTimeout (function() {illuminationsOff()}, 1500);
   setTimeout (function() {buttonsReady()}, 1500);
 }
+
+
+/// Show game rules
+function modalBoxVisibility() {
+  modalBox.classList.toggle("displayNone");
+}
+
+btnQuestion.onclick = function() {
+  modalBoxVisibility();
+}
+
+modalBox.addEventListener("click", modalBoxVisibility);
+
+
 

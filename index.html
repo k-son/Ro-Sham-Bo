@@ -114,6 +114,26 @@
     <img src="img/volume-off.svg" alt="Turn sound off" class="soundButton__icon displayBlock " id="sound-off">
   </div>
 </main>
+  <!-- Modal about game - triggered by questionButton -->
+  <div class="modalBox displayNone" id="modalBox">
+      <p class="modalBox__closeBtn">x</p>
+      <div>
+        <h1 class="modalBox__h1">Ro-Sham-Bo</h1>
+        <h2 class="modalBox__h2">game rules</h2>
+        <p class="modalBox__para">Press 'New Game' to start a game.</p>
+        <p class="modalBox__para">Press <img src="img/open.svg" alt="An open hand as a symbol of paper" class="modalBox__icon"> to choose 'paper'.</p>
+        <p class="modalBox__para">Press <img src="img/grab.svg" alt="A fist as a symbol of rock" class="modalBox__icon"> to choose 'rock'.</p>
+        <p class="modalBox__para">Press <img src="img/victory.svg" alt="A vicotry fingers as a symbol of scissors" class="modalBox__icon"> to choose 'scissors'.</p>
+        <p class="modalBox__para">Paper beats rock.</p>
+        <p class="modalBox__para">Rock beats scissors.</p>
+        <p class="modalBox__para">Scissors beats paper.</p>
+      </div>
+      <p class="modalBox__credits">Created by Jacek Jarczok. 2019.</p>
+    </div>
+  <!-- Audio game saounds-->
+  <audio src="sounds/start.mp3" id="sound__start"></audio>
+  <audio src="sounds/won.mp3" id="sound__win--you"></audio>
+  <audio src="sounds/losegame.mp3" id="sound__win--cpu"></audio>
 <script src="scripts.js"></script>
 </body>
 </html>
