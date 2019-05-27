@@ -169,7 +169,7 @@ btnSoundOff.addEventListener("click", function() {
 
 /// Buttons ready - prepare and handle player's choice
 function buttonsReady() {
-  if (scoreYou === 2) {
+  if (scoreYou === 5) {
     disableButtons();
     btnStartIns.removeEventListener("click", play);
     pulsate(signalWinYou);
@@ -177,7 +177,7 @@ function buttonsReady() {
     illuminateScoreBox(signalScoreBoxYou);
     pointTheWinner(signalWinYou, signalScoreBoxYou);
     btnStartOut.classList.add("illuminate--bg");
-  } else if (scoreCpu === 2) {
+  } else if (scoreCpu === 5) {
     disableButtons();
     btnStartIns.removeEventListener("click", play);
     pulsate(signalWinCpu);
