@@ -135,10 +135,6 @@ function playAudio(sound) {
   sound.play();
 }
 
-function pauseAudio(sound) { 
-  sound.pause(); 
-}
-
 /// Mute and unmute audio
 
 function playSounds() {
