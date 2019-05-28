@@ -297,6 +297,11 @@
   width: 6rem;
   display: flex;
   justify-content: space-evenly;
+  display: none;
+
+  @media only screen and (min-width: 600px) {
+    display: flex;
+  }
 
   &__bar {
     height: 100%;
