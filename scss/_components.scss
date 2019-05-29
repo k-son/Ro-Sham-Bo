@@ -276,8 +276,9 @@
 
   &__para {
 
-    &:nth-child(3),
-    &:nth-child(6) {
+    &:nth-of-type(1),
+    &:nth-of-type(4),
+    &:nth-of-type(8) {
       margin-bottom: 1.2rem;
     }
   }
