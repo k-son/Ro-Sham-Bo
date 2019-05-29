@@ -1,8 +1,5 @@
 # Ro-Sham-Bo
 Simple online game also known as "Rock paper scissors".
-
-
-## General info
 Created for practice Vanilla JavaScript programming.
 
 
