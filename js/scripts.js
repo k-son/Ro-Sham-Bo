@@ -150,13 +150,13 @@ function muteSounds() {
 }
 
 btnSoundOn.addEventListener("click", function() {
-  playSounds();
+  muteSounds();
   btnSoundOn.classList.toggle("displayNone");
   btnSoundOff.classList.toggle("displayNone");
 })
 
 btnSoundOff.addEventListener("click", function() {
-  muteSounds();
+  playSounds();
   btnSoundOn.classList.toggle("displayNone");
   btnSoundOff.classList.toggle("displayNone");
 })
