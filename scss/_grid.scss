@@ -1,15 +1,11 @@
 .main {
   display: grid;
-  grid-template-columns: 1fr min-content .2fr min-content 1fr;
+  grid-template-columns: 1fr 45% .4fr 45% 1fr;
   grid-template-rows: 1fr repeat(5, auto) 1fr;
   grid-column-gap: .8rem;
-  grid-row-gap: 1.5rem;
+  grid-row-gap: 2.2rem;
 
-  @media only screen and (min-height: 600px) {
-    grid-template-rows: 1fr repeat(5, auto) 1fr;
-  }
-
-  @media only screen and (min-width: 700px) {
+  @media only screen and (min-height: 650px) {
     grid-row-gap: 3rem;
   }
 }

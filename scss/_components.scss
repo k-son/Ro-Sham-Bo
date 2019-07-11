@@ -83,13 +83,16 @@
 }
 
 .whoWins {
-  font-size: 1.6rem;
-  margin-bottom: .4rem;
+  font-size: 2.1rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  word-spacing: -.2rem;
 }
 
 .pointFor {
-  font-size: 1rem;
-  margin-top: .4rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  word-spacing: -.2rem;
 }
 
 
@@ -123,15 +126,15 @@
   }
 
   &__text {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
   }
 
   &__indicator {
-    @include circle(1rem);
+    @include circle(1.5rem);
     background-color: var(--color-lumination-off);
     @include thinBorder;
-    margin: 0 1rem;
+    margin: .3rem 1rem;
   }
 }
 
@@ -145,11 +148,7 @@
   grid-column: 2 / 5;
   grid-row: 4 / 5;
   display: flex;
-  justify-content: space-between;
-
-  @media only screen and (min-width: 700px) {
-    justify-content: space-around;
-  }
+  justify-content: space-evenly;
 }
 
 .gamingButton {
@@ -300,7 +299,7 @@
   justify-content: space-evenly;
   display: none;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 700px) {
     display: flex;
   }
 
