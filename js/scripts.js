@@ -1,4 +1,4 @@
-//// DOM Elements
+//// DOM ELEMENTS
 
 // Ins is for inside/clickable part of button
 // Out is for outer/illuminable part of button
@@ -44,7 +44,7 @@ let scoreYou = 0;
 let scoreCpu = 0;
 
 
-//// Game functions
+//// GAME FUNCTIONS
 
 // start() executed on page load
 start();
@@ -60,7 +60,6 @@ function play() {
   trunOffStart();
   buttonsReady();
 }
-
 
 // When want to cancel current and start new game
 function startNewGame() {
@@ -95,8 +94,8 @@ function illuminationsOff() {
 function zeroScores() {
   scoreYou = 0;
   scoreCpu = 0;
-  setTimeout (function() {document.getElementById("score--you--0").scrollIntoView()}, 10);
-  setTimeout (function() {document.getElementById("score--cpu--0").scrollIntoView()}, 600);
+  setTimeout ( () => {document.getElementById("score--you--0").scrollIntoView()}, 10);
+  setTimeout ( () => {document.getElementById("score--cpu--0").scrollIntoView()}, 600);
 }
 
 // Switch off all illuminations and zero scores
@@ -108,23 +107,23 @@ function clean() {
 // To pulsate illuminable elements
 function pulsate(el) {
   el.classList.add("illuminate");
-  setTimeout (function() {el.classList.remove("illuminate")}, 300);
-  setTimeout (function() {el.classList.add("illuminate")}, 600);
-  setTimeout (function() {el.classList.remove("illuminate")}, 900);
-  setTimeout (function() {el.classList.add("illuminate")}, 1200);
-  setTimeout (function() {el.classList.remove("illuminate")}, 1500);
+  setTimeout ( () => {el.classList.remove("illuminate")}, 300);
+  setTimeout ( () => {el.classList.add("illuminate")}, 600);
+  setTimeout ( () => {el.classList.remove("illuminate")}, 900);
+  setTimeout ( () => {el.classList.add("illuminate")}, 1200);
+  setTimeout ( () => {el.classList.remove("illuminate")}, 1500);
 }
 
 // Illuminate scoreBox after getting a point
 function illuminateScoreBox(el) {
   el.classList.add("illuminate--bg");
-  setTimeout (function() {el.classList.remove("illuminate--bg")}, 1500);
+  setTimeout ( () => {el.classList.remove("illuminate--bg")}, 1500);
 }
 
 // Keep illuminated signalWin and scoreBox after pulsation ends - indicates a winner
 function pointTheWinner(signal, box) {
-  setTimeout (function() {signal.classList.add("illuminate")}, 1500);
-  setTimeout (function() {box.classList.add("illuminate--bg")}, 1500);
+  setTimeout ( () => {signal.classList.add("illuminate")}, 1500);
+  setTimeout ( () => {box.classList.add("illuminate--bg")}, 1500);
 }
 
 // Disable and switch off buttons (paper, rock and scissors)
@@ -137,7 +136,6 @@ function disableButtons() {
   btnScissorsOut.classList.remove("illuminate--bg");
 }
 
-
 function playAudio(sound) {
   sound.play();
 }
@@ -149,7 +147,7 @@ function playSounds() {
   soundWinCpu.muted = false;
 }
 
-btnSoundOff.addEventListener("click", function() {
+btnSoundOff.addEventListener("click", () => {
   playSounds();
   btnSoundOn.classList.toggle("displayNone");
   btnSoundOff.classList.toggle("displayNone");
@@ -162,7 +160,7 @@ function muteSounds() {
   soundWinCpu.muted = true;
 }
 
-btnSoundOn.addEventListener("click", function() {
+btnSoundOn.addEventListener("click", () => {
   muteSounds();
   btnSoundOn.classList.toggle("displayNone");
   btnSoundOff.classList.toggle("displayNone");
@@ -173,13 +171,11 @@ function modalBoxVisibility() {
   modalBox.classList.toggle("displayNone");
 }
 
-btnQuestion.onclick = function() {
+btnQuestion.onclick = () => {
   modalBoxVisibility();
 }
 
 modalBox.addEventListener("click", modalBoxVisibility);
-
-
 
 // Buttons ready - prepares buttons for game round and handles player's choice
 // Chcecks if somebody already has 5 points and wins the game
@@ -206,21 +202,20 @@ function buttonsReady() {
     btnRockOut.classList.add("illuminate--bg");
     btnScissorsOut.classList.add("illuminate--bg");
   
-    btnPaperIns.onclick = function() {  
+    btnPaperIns.onclick = () => {  
       disableButtons();
       round("paper");
     }
-    btnRockIns.onclick = function() {
+    btnRockIns.onclick = () => {
       disableButtons();
       round("rock");
     }
-    btnScissorsIns.onclick = function() {
+    btnScissorsIns.onclick = () => {
       disableButtons();
       round("scissors");
     }
   }
 }
-
 
 // Game round - decides who gets a point
 function round(choice) {
@@ -276,7 +271,6 @@ function round(choice) {
   }
 }
 
-
 // Actions after getting a point or in case of a draw
 function pointForYou() {
   disableButtons();
@@ -284,8 +278,8 @@ function pointForYou() {
   illuminateScoreBox(signalScoreBoxYou);
   ++scoreYou;
   document.getElementById(`score--you--${scoreYou}`).scrollIntoView();
-  setTimeout (function() {illuminationsOff()}, 1500);
-  setTimeout (function() {buttonsReady()}, 1500);
+  setTimeout ( () => {illuminationsOff()}, 1500);
+  setTimeout ( () => {buttonsReady()}, 1500);
 }
 
 function pointForCpu() {
@@ -294,16 +288,16 @@ function pointForCpu() {
   illuminateScoreBox(signalScoreBoxCpu);
   ++scoreCpu;  
   document.getElementById(`score--cpu--${scoreCpu}`).scrollIntoView();
-  setTimeout (function() {illuminationsOff()}, 1500);
-  setTimeout (function() {buttonsReady()}, 1500);
+  setTimeout ( () => {illuminationsOff()}, 1500);
+  setTimeout ( () => {buttonsReady()}, 1500);
 }
 
 function noPoints() {
   disableButtons();
   pulsate(signalDrawYou);
   pulsate(signalDrawCpu);
-  setTimeout (function() {illuminationsOff()}, 1500);
-  setTimeout (function() {buttonsReady()}, 1500);
+  setTimeout ( () => {illuminationsOff()}, 1500);
+  setTimeout ( () => {buttonsReady()}, 1500);
 }
 
 
