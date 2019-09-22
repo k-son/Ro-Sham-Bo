@@ -1,3 +1,5 @@
+"use strict";
+
 //// DOM ELEMENTS
 
 // Ins is for inside/clickable part of button
