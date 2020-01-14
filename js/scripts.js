@@ -73,7 +73,7 @@ function startNewGame() {
 // Computer draws it's choice
 function drawCpu() {
   const choices = ["paper", "rock", "scissors"];
-  let draw = Math.floor(Math.random() * 3);
+  const draw = Math.floor(Math.random() * 3);
   return choices[draw];
 }
 
@@ -84,10 +84,10 @@ function trunOffStart() {
 
 // Cleaning functions to switch off all illuminations
 function illuminationsOff() {
-  let illuminated = document.getElementsByClassName("illuminate");
+  const illuminated = document.getElementsByClassName("illuminate");
   while (illuminated.length)
       illuminated[0].classList.remove("illuminate");
-  let illuminatedBg = document.getElementsByClassName("illuminate--bg");
+  const illuminatedBg = document.getElementsByClassName("illuminate--bg");
   while (illuminatedBg.length)
       illuminatedBg[0].classList.remove("illuminate--bg");
 }
