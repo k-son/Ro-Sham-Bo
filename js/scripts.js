@@ -48,22 +48,22 @@ let computerActualScore = 0;
 function afterPageLoad() {
   newgameBtnIllumination.classList.add("illuminate--bg");
   muteSounds();
-  newgameBtn.addEventListener("click", letsPlayFirstGame);
+  newgameBtn.addEventListener("click", playNewGame);
 }
 
 afterPageLoad();
 
-function letsPlayFirstGame() {
+function playNewGame() {
   playAudio(newgameStartsMelody);
   trunOffStartBtn();
-  buttonsReady();
+  turnOnPaperRockScissorsBtns();
 }
 
 // When want to cancel current and start new game
 function startNewGame() {
-  clean();
+  zeroScoresTurnOffIlluminations();
   playAudio(newgameStartsMelody);
-  setTimeout(buttonsReady, 1200);
+  setTimeout(turnOnPaperRockScissorsBtns, 1200);
 }
 
 // Computer draws it's choice
@@ -79,7 +79,7 @@ function trunOffStartBtn() {
 }
 
 // Cleaning functions to switch off all illuminations
-function illuminationsOff() {
+function turnOffAllIlluminations() {
   const illuminated = document.getElementsByClassName("illuminate");
   while (illuminated.length)
       illuminated[0].classList.remove("illuminate");
@@ -97,13 +97,13 @@ function zeroScores() {
 }
 
 // Switch off all illuminations and zero scores
-function clean() {
+function zeroScoresTurnOffIlluminations() {
   zeroScores();
-  illuminationsOff();
+  turnOffAllIlluminations();
 }
 
 // To pulsate illuminable elements
-function pulsate(el) {
+function pulsateIllumination(el) {
   el.classList.add("illuminate");
   setTimeout ( () => {el.classList.remove("illuminate")}, 300);
   setTimeout ( () => {el.classList.add("illuminate")}, 600);
@@ -119,13 +119,13 @@ function illuminateScoreBox(el) {
 }
 
 // Keep illuminated signalWin and scoreBox after pulsation ends - indicates a winner
-function pointTheWinner(signal, box) {
+function keepTheWinnerIlluminated(signal, box) {
   setTimeout ( () => {signal.classList.add("illuminate")}, 1500);
   setTimeout ( () => {box.classList.add("illuminate--bg")}, 1500);
 }
 
 // Disable and switch off buttons (paper, rock and scissors)
-function disableButtons() {
+function disablePaperRockScissorsBtns() {
   paperBtn.onclick = null;
   rockBtn.onclick = null;
   scissorsBtn.onclick = null;
@@ -177,22 +177,22 @@ modalBox.addEventListener("click", modalBoxVisibility);
 
 // Buttons ready - prepares buttons for game round and handles player's choice
 // Chcecks if somebody already has 5 points and wins the game
-function buttonsReady() {
+function turnOnPaperRockScissorsBtns() {
   if (playerActualScore === 5) {
-    disableButtons();
-    newgameBtn.removeEventListener("click", play);
-    pulsate(playerWinsIllumination);
+    disablePaperRockScissorsBtns();
+    newgameBtn.removeEventListener("click", playNewGame);
+    pulsateIllumination(playerWinsIllumination);
     playAudio(playerWinsMelody);
     illuminateScoreBox(playerScoreBoxIllumination);
-    pointTheWinner(playerWinsIllumination, playerScoreBoxIllumination);
+    keepTheWinnerIlluminated(playerWinsIllumination, playerScoreBoxIllumination);
     newgameBtnIllumination.classList.add("illuminate--bg");
   } else if (computerActualScore === 5) {
-    disableButtons();
-    newgameBtn.removeEventListener("click", play);
-    pulsate(computerWinsIllumination);
+    disablePaperRockScissorsBtns();
+    newgameBtn.removeEventListener("click", playNewGame);
+    pulsateIllumination(computerWinsIllumination);
     playAudio(computerWinsMelody);
     illuminateScoreBox(computerScoreBoxIllumination);
-    pointTheWinner(computerWinsIllumination, computerScoreBoxIllumination);
+    keepTheWinnerIlluminated(computerWinsIllumination, computerScoreBoxIllumination);
     newgameBtnIllumination.classList.add("illuminate--bg");
   } else {
     newgameBtn.addEventListener("click", startNewGame);
@@ -201,15 +201,15 @@ function buttonsReady() {
     scissorsBtnIllumination.classList.add("illuminate--bg");
   
     paperBtn.onclick = () => {  
-      disableButtons();
+      disablePaperRockScissorsBtns();
       round("paper");
     }
     rockBtn.onclick = () => {
-      disableButtons();
+      disablePaperRockScissorsBtns();
       round("rock");
     }
     scissorsBtn.onclick = () => {
-      disableButtons();
+      disablePaperRockScissorsBtns();
       round("scissors");
     }
   }
@@ -271,31 +271,31 @@ function round(choice) {
 
 // Actions after getting a point or in case of a draw
 function pointForYou() {
-  disableButtons();
-  pulsate(playerGetsPointIllumination);
+  disablePaperRockScissorsBtns();
+  pulsateIllumination(playerGetsPointIllumination);
   illuminateScoreBox(playerScoreBoxIllumination);
   ++playerActualScore;
   document.getElementById(`score--you--${playerActualScore}`).scrollIntoView();
-  setTimeout ( () => {illuminationsOff()}, 1500);
-  setTimeout ( () => {buttonsReady()}, 1500);
+  setTimeout ( () => {turnOffAllIlluminations()}, 1500);
+  setTimeout ( () => {turnOnPaperRockScissorsBtns()}, 1500);
 }
 
 function pointForCpu() {
-  disableButtons();
-  pulsate(computerGetsPointIllumination);
+  disablePaperRockScissorsBtns();
+  pulsateIllumination(computerGetsPointIllumination);
   illuminateScoreBox(computerScoreBoxIllumination);
   ++computerActualScore;  
   document.getElementById(`score--cpu--${computerActualScore}`).scrollIntoView();
-  setTimeout ( () => {illuminationsOff()}, 1500);
-  setTimeout ( () => {buttonsReady()}, 1500);
+  setTimeout ( () => {turnOffAllIlluminations()}, 1500);
+  setTimeout ( () => {turnOnPaperRockScissorsBtns()}, 1500);
 }
 
 function noPoints() {
-  disableButtons();
-  pulsate(playerDrawsIllumination);
-  pulsate(computerDrawsIllumination);
-  setTimeout ( () => {illuminationsOff()}, 1500);
-  setTimeout ( () => {buttonsReady()}, 1500);
+  disablePaperRockScissorsBtns();
+  pulsateIllumination(playerDrawsIllumination);
+  pulsateIllumination(computerDrawsIllumination);
+  setTimeout ( () => {turnOffAllIlluminations()}, 1500);
+  setTimeout ( () => {turnOnPaperRockScissorsBtns()}, 1500);
 }
 
 
