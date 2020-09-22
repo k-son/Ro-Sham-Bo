@@ -6,6 +6,7 @@
 // Out is for outer/illuminable part of button
 const newgameBtn = document.getElementById("button--start--ins");
 const newgameBtnIllumination = document.getElementById("button--start--out");
+const gamingButtons = document.querySelectorAll('.gamingButton__inside');
 const paperBtn = document.getElementById("button--paper--ins");
 const paperBtnIllumination = document.getElementById("button--paper--out");
 const rockBtn = document.getElementById("button--rock--ins");
@@ -126,9 +127,7 @@ function keepTheWinnerIlluminated(signal, box) {
 
 // Disable and switch off buttons (paper, rock and scissors)
 function disablePaperRockScissorsBtns() {
-  paperBtn.onclick = null;
-  rockBtn.onclick = null;
-  scissorsBtn.onclick = null;
+  gamingButtons.forEach(el => el.disabled = true);
   paperBtnIllumination.classList.remove("illuminate--bg");
   rockBtnIllumination.classList.remove("illuminate--bg");
   scissorsBtnIllumination.classList.remove("illuminate--bg");
@@ -178,7 +177,7 @@ modalBox.addEventListener("click", modalBoxVisibility);
 // Buttons ready - prepares buttons for game round and handles player's choice
 // Chcecks if somebody already has 5 points and wins the game
 function turnOnPaperRockScissorsBtns() {
-  if (playerActualScore === 5) {
+  if (playerActualScore === 2) {
     disablePaperRockScissorsBtns();
     newgameBtn.removeEventListener("click", playNewGame);
     pulsateIllumination(playerWinsIllumination);
@@ -186,7 +185,7 @@ function turnOnPaperRockScissorsBtns() {
     illuminateScoreBox(playerScoreBoxIllumination);
     keepTheWinnerIlluminated(playerWinsIllumination, playerScoreBoxIllumination);
     newgameBtnIllumination.classList.add("illuminate--bg");
-  } else if (computerActualScore === 5) {
+  } else if (computerActualScore === 2) {
     disablePaperRockScissorsBtns();
     newgameBtn.removeEventListener("click", playNewGame);
     pulsateIllumination(computerWinsIllumination);
@@ -195,6 +194,7 @@ function turnOnPaperRockScissorsBtns() {
     keepTheWinnerIlluminated(computerWinsIllumination, computerScoreBoxIllumination);
     newgameBtnIllumination.classList.add("illuminate--bg");
   } else {
+    gamingButtons.forEach(el => el.disabled = false);
     newgameBtn.addEventListener("click", startNewGame);
     paperBtnIllumination.classList.add("illuminate--bg");
     rockBtnIllumination.classList.add("illuminate--bg");

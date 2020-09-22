@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css?family=Codystar|Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <script src="js/scripts.js" defer></script>
-  <link rel="stylesheet" href="css/styles.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <main class="main">
@@ -97,31 +97,31 @@
   <!-- Gaming buttons -->
   <div class="gamingButtonBox">
     <div class="gamingButton" id="button--paper--out">
-      <div class="button gamingButton__inside" id="button--paper--ins" title="Paper">
+      <button class="button gamingButton__inside" type="button" id="button--paper--ins" title="Paper" aria-label="Paper" disabled>
         <img src="img/open.svg" alt="An open hand as a symbol of paper" class="gamingButton__icon">
-      </div>
+      </button>
     </div>
     <div class="gamingButton" id="button--rock--out">
-      <div class="button gamingButton__inside" id="button--rock--ins" title="Rock">
+      <button class="button gamingButton__inside" type="button" id="button--rock--ins" title="Rock" aria-label="Rock" disabled>
         <img src="img/grab.svg" alt="A fist as a symbol of rock" class="gamingButton__icon">
-      </div>
+      </button>
     </div>
     <div class="gamingButton" id="button--scissors--out">
-      <div class="button gamingButton__inside" id="button--scissors--ins" title="Scissors">
+      <button class="button gamingButton__inside" type="button" id="button--scissors--ins" title="Scissors" aria-label="Scissors" disabled>
         <img src="img/victory.svg" alt="A vicotry fingers as a symbol of scissors" class="gamingButton__icon">
-      </div>
+      </button>
     </div>
   </div>
   <div class="startButton" id="button--start--out">
-    <div class="button startButton__inside" id="button--start--ins" title="Start new game"><span class="startButton__text">new game</span></div>
+    <button class="button startButton__inside" id="button--start--ins" type="button" title="Start new game" aria-label="Start new game"><span class="startButton__text">new game</span></button>
   </div>
-  <div class="button questionButton" id="button--question" title="Rules of the game">
+  <button class="button questionButton" id="button--question" type="button" title="Read rules of the game" aria-label="Read rules of the game">
     <img src="img/question-mark.svg" alt="A question mark, click it to read the rules of the game" class="questionButton__icon" id="question">
-  </div>
-  <div class="button soundButton" id="button--sound" title="Turn on/off sound">
+  </button>
+  <button class="button soundButton" id="button--sound" type="button" title="Turn on/off sound" aria-label="Turn on/off sound">
     <img src="img/volume-on.svg" alt="Volume is on" class="soundButton__icon displayNone" id="sound--on">
     <img src="img/volume-off.svg" alt="Volume is off" class="soundButton__icon" id="sound--off">
-  </div>
+  </button>
   <div class="speakerBox">
     <div class="speakerBox__bar"></div>
     <div class="speakerBox__bar"></div>
@@ -132,7 +132,7 @@
 </main>
   <!-- Modal about game - triggered by questionButton -->
   <div class="modalBox displayNone" id="modalBox">
-      <p class="modalBox__closeBtn">x</p>
+      <button class="modalBox__closeBtn">x</button>
       <div>
         <h1 class="modalBox__h1">Ro-Sham-Bo</h1>
         <h2 class="modalBox__h2">game rules</h2>

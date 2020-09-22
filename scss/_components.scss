@@ -155,9 +155,10 @@
   @include thinBorder;
 
   &__inside {
-  @include centerFlex;
-  @include circle(80%);
-  background-color: var(--color-gamingButton-bg);
+    border: none;
+    @include centerFlex;
+    @include circle(80%);
+    background-color: var(--color-gamingButton-bg);
   }
 
   &__icon {
@@ -189,7 +190,8 @@
   }
     
   &__text {
-    font-size: 1.2rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.4rem;
     text-transform: uppercase;
     color: var(--color-startButton);
   }
@@ -251,9 +253,14 @@
   }
 
   &__closeBtn {
+    align-self: flex-end;
+    width: fit-content;
     font-size: 3rem;
     text-align: end;
+    padding: 2.4rem;
     margin-top: 3rem;
+    background-color: transparent;
+    border: none;
 
     &:hover {
       cursor: pointer;
