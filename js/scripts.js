@@ -6,14 +6,12 @@
 // Out is for outer/illuminable part of button
 const newgameBtn = document.getElementById("button--start--ins");
 const newgameBtnIllumination = document.getElementById("button--start--out");
-const gamingButtons = document.querySelectorAll('.gamingButton__inside');
+const gamingButtons = document.querySelectorAll(".gamingButton__inside");
 const paperBtn = document.getElementById("button--paper--ins");
-const paperBtnIllumination = document.getElementById("button--paper--out");
 const rockBtn = document.getElementById("button--rock--ins");
-const rockBtnIllumination = document.getElementById("button--rock--out");
 const scissorsBtn = document.getElementById("button--scissors--ins");
-const scissorsBtnIllumination = document.getElementById("button--scissors--out");
-const soundBtn = document.getElementById('button--sound');
+const gamingButtonsIllumination = document.querySelectorAll(".gamingButton");
+const soundBtn = document.getElementById("button--sound");
 const soundOnBtn = document.getElementById("sound--on");  // visible when sounds are unmuted
 const soundOffBtn = document.getElementById("sound--off"); // visible when sounds are muted
 const aboutBtn = document.getElementById("button--question");  // click it to open modalBox/show game rules
@@ -142,9 +140,7 @@ function keepTheWinnerIlluminated(signal, box) {
 // Disable and switch off buttons (paper, rock and scissors)
 function disablePaperRockScissorsBtns() {
   gamingButtons.forEach(el => el.disabled = true);
-  paperBtnIllumination.classList.remove("illuminate--bg");
-  rockBtnIllumination.classList.remove("illuminate--bg");
-  scissorsBtnIllumination.classList.remove("illuminate--bg");
+  gamingButtonsIllumination.forEach(el => el.classList.remove("illuminate--bg"));  
 }
 
 function playAudio(sound) {
@@ -201,10 +197,8 @@ function turnOnPaperRockScissorsBtns() {
     newgameBtnIllumination.classList.add("illuminate--bg");
   } else {
     gamingButtons.forEach(el => el.disabled = false);
+    gamingButtonsIllumination.forEach(el => el.classList.add("illuminate--bg"));  
     newgameBtn.addEventListener("click", startNewGame);
-    paperBtnIllumination.classList.add("illuminate--bg");
-    rockBtnIllumination.classList.add("illuminate--bg");
-    scissorsBtnIllumination.classList.add("illuminate--bg");
   
     paperBtn.onclick = () => {  
       disablePaperRockScissorsBtns();
