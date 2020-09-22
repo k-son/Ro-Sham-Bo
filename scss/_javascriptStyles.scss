@@ -1,3 +1,7 @@
+.displayNone {
+  display: none;
+}
+
 .illuminate {
   color: var(--color-lumination-on);
 }
@@ -6,9 +10,64 @@
   background-color: var(--color-lumination-on);
 }
 
-.displayNone {
-  display: none;
+
+// animate 'new game' button 
+.illuminate-start {
+  animation: illuminateStartButton 4s linear infinite;
+  animation-timing-function: steps-start;
 }
+
+@keyframes illuminateStartButton {
+  0% {
+    background-color: var(--color-lumination-off);
+  }
+  6% {
+    background-color: var(--color-lumination-on);
+  }
+  12% {
+    background-color: var(--color-lumination-off);
+  }
+  18% {
+    background-color: var(--color-lumination-on);
+  }
+  24% {
+    background-color: var(--color-lumination-off);
+  }
+  30% {
+    background-color: var(--color-lumination-on);
+  }
+  100% {
+    background-color: var(--color-lumination-on);
+  }
+}
+
+
+// animate gaming buttons
+.illuminate-gamingButtons {
+  animation: illuminateGamingButtons 4s linear infinite;
+  animation-timing-function: steps-start;
+}
+
+#button--rock--out {
+  animation-delay: .3s;
+}
+
+#button--scissors--out {
+  animation-delay: .5s;
+}
+
+@keyframes illuminateGamingButtons {
+  0% {
+    background-color: var(--color-lumination-off);
+  }
+  5% {
+    background-color: var(--color-lumination-on);
+  }
+  100% {
+    background-color: var(--color-lumination-on);
+  }
+}
+
 
 // for keydown and mousedown event listeners
 .intent-mouse button {
