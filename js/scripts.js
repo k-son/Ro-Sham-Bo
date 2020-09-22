@@ -13,6 +13,7 @@ const rockBtn = document.getElementById("button--rock--ins");
 const rockBtnIllumination = document.getElementById("button--rock--out");
 const scissorsBtn = document.getElementById("button--scissors--ins");
 const scissorsBtnIllumination = document.getElementById("button--scissors--out");
+const soundBtn = document.getElementById('button--sound');
 const soundOnBtn = document.getElementById("sound--on");  // visible when sounds are unmuted
 const soundOffBtn = document.getElementById("sound--off"); // visible when sounds are muted
 const aboutBtn = document.getElementById("button--question");  // click it to open modalBox/show game rules
@@ -36,13 +37,16 @@ const computerDrawsIllumination = document.getElementById("draw--cpu");
 const playerScoreBoxIllumination = document.getElementById("scoreBox--you");
 const computerScoreBoxIllumination = document.getElementById("scoreBox--cpu");
 
+// sounds
+const melodies = document.querySelectorAll('.melody');
 const newgameStartsMelody = document.getElementById("sound__start");  // plays after clicking newgameBtn
-const playerWinsMelody = document.getElementById("sound__win--you");  // plays after you win/score 5 points 
-const computerWinsMelody = document.getElementById("sound__win--cpu");  // plays after computer wins/scores 5 points
+const playerWinsMelody = document.getElementById("sound__win--you");  // plays after you win/reach winningScore 
+const computerWinsMelody = document.getElementById("sound__win--cpu");  // plays after computer wins/reaches winningScore 
 
 // score counts, used i.a. to move scoreBox__display
 let playerActualScore = 0;
 let computerActualScore = 0;
+const winningScore = 5; 
 
 
 //// GAME FUNCTIONS
@@ -60,12 +64,14 @@ function playNewGame() {
   turnOnPaperRockScissorsBtns();
 }
 
+
 // When want to cancel current and start new game
 function startNewGame() {
   zeroScoresTurnOffIlluminations();
   playAudio(newgameStartsMelody);
   setTimeout(turnOnPaperRockScissorsBtns, 1200);
 }
+
 
 // Computer draws it's choice
 function drawCpu() {
@@ -74,10 +80,12 @@ function drawCpu() {
   return choices[draw];
 }
 
+
 // Turn off start button
 function trunOffStartBtn() {
   newgameBtnIllumination.classList.remove("illuminate--bg");
 }
+
 
 // Cleaning functions to switch off all illuminations
 function turnOffAllIlluminations() {
@@ -89,6 +97,7 @@ function turnOffAllIlluminations() {
       illuminatedBg[0].classList.remove("illuminate--bg");
 }
 
+
 // Zero scores and so display "0" on scoreBox__display
 function zeroScores() {
   playerActualScore = 0;
@@ -97,11 +106,13 @@ function zeroScores() {
   setTimeout ( () => {document.getElementById("score--cpu--0").scrollIntoView()}, 600);
 }
 
+
 // Switch off all illuminations and zero scores
 function zeroScoresTurnOffIlluminations() {
   zeroScores();
   turnOffAllIlluminations();
 }
+
 
 // To pulsate illuminable elements
 function pulsateIllumination(el) {
@@ -113,17 +124,20 @@ function pulsateIllumination(el) {
   setTimeout ( () => {el.classList.remove("illuminate")}, 1500);
 }
 
+
 // Illuminate scoreBox after getting a point
 function illuminateScoreBox(el) {
   el.classList.add("illuminate--bg");
   setTimeout ( () => {el.classList.remove("illuminate--bg")}, 1500);
 }
 
+
 // Keep illuminated signalWin and scoreBox after pulsation ends - indicates a winner
 function keepTheWinnerIlluminated(signal, box) {
   setTimeout ( () => {signal.classList.add("illuminate")}, 1500);
   setTimeout ( () => {box.classList.add("illuminate--bg")}, 1500);
 }
+
 
 // Disable and switch off buttons (paper, rock and scissors)
 function disablePaperRockScissorsBtns() {
@@ -137,31 +151,22 @@ function playAudio(sound) {
   sound.play();
 }
 
-// Unmute audio
-function playSounds() {
-  newgameStartsMelody.muted = false;
-  playerWinsMelody.muted = false;
-  computerWinsMelody.muted = false;
-}
 
-soundOffBtn.addEventListener("click", () => {
-  playSounds();
+// Unmute / mute sounds
+function handleSounds() {
+  melodies.forEach(el => el.muted === true ? el.muted = false : el.muted = true);
   soundOnBtn.classList.toggle("displayNone");
   soundOffBtn.classList.toggle("displayNone");
-})
+}
 
-// Mute audio
+soundBtn.addEventListener("click", handleSounds);
+
+
+// Mute sounds
 function muteSounds() {
-  newgameStartsMelody.muted = true;
-  playerWinsMelody.muted = true;
-  computerWinsMelody.muted = true;
+  melodies.forEach(el => el.muted = true);
 }
 
-soundOnBtn.addEventListener("click", () => {
-  muteSounds();
-  soundOnBtn.classList.toggle("displayNone");
-  soundOffBtn.classList.toggle("displayNone");
-})
 
 // Show game rules / open modalBox
 function modalBoxVisibility() {
@@ -174,10 +179,11 @@ aboutBtn.onclick = () => {
 
 modalBox.addEventListener("click", modalBoxVisibility);
 
+
 // Buttons ready - prepares buttons for game round and handles player's choice
-// Chcecks if somebody already has 5 points and wins the game
+// Chcecks if anybody has already reached winningScore
 function turnOnPaperRockScissorsBtns() {
-  if (playerActualScore === 2) {
+  if (playerActualScore === winningScore) {
     disablePaperRockScissorsBtns();
     newgameBtn.removeEventListener("click", playNewGame);
     pulsateIllumination(playerWinsIllumination);
@@ -185,7 +191,7 @@ function turnOnPaperRockScissorsBtns() {
     illuminateScoreBox(playerScoreBoxIllumination);
     keepTheWinnerIlluminated(playerWinsIllumination, playerScoreBoxIllumination);
     newgameBtnIllumination.classList.add("illuminate--bg");
-  } else if (computerActualScore === 2) {
+  } else if (computerActualScore === winningScore) {
     disablePaperRockScissorsBtns();
     newgameBtn.removeEventListener("click", playNewGame);
     pulsateIllumination(computerWinsIllumination);
@@ -214,6 +220,7 @@ function turnOnPaperRockScissorsBtns() {
     }
   }
 }
+
 
 // Game round - decides who gets a point
 function round(choice) {
@@ -268,6 +275,7 @@ function round(choice) {
       break;
   }
 }
+
 
 // Actions after getting a point or in case of a draw
 function pointForYou() {
