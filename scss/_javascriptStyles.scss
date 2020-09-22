@@ -9,3 +9,8 @@
 .displayNone {
   display: none;
 }
+
+// for keydown and mousedown event listeners
+.intent-mouse button {
+  outline: 0;
+}

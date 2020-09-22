@@ -305,3 +305,16 @@ function noPoints() {
   setTimeout ( () => {turnOffAllIlluminations()}, 1500);
   setTimeout ( () => {turnOnPaperRockScissorsBtns()}, 1500);
 }
+
+
+// Remove outline when accessing buttons with mouse.
+document.addEventListener('mousedown', () =>
+  document.body.classList.add('intent-mouse') 
+);
+
+// Keep outline when accessing buttons with tab key.
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+      document.body.classList.remove('intent-mouse')
+  }
+});
