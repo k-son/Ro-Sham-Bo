@@ -297,5 +297,3 @@ function noPoints() {
   setTimeout ( () => {turnOffAllIlluminations()}, 1500);
   setTimeout ( () => {turnOnPaperRockScissorsBtns()}, 1500);
 }
-
-
